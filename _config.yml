@@ -73,12 +73,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: jekyll-theme-slate
+theme: vno
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/Took-up-up/Took-up-up.github.io.git
-  branch: master
+  repo: https://github.com/look-up-up/look-up-up.github.io.git
 

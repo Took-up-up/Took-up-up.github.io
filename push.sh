@@ -1,5 +1,5 @@
 #!/bin/bash
-# /home/yunva/git/nvm/project/my-blog
+# /xx/xx/xx/nvm/project/my-blog
 
 i=`date +"%H:%M:%S"`
 git add --all

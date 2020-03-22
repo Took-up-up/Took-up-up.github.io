@@ -1,5 +1,8 @@
 #!/bin/bash
-i=`date +"%H;%M;%S"`
+# /home/yunva/git/nvm/project/my-blog
+
+
+i=`date +"%H:%M:%S"`
 git add --all
 git commit -m "$i"
 git push

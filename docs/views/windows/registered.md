@@ -4,7 +4,7 @@ date: 2019-04-09
 tags:
  - 
 categories:
- - Windows
+ - windows
 ---
 
 ## windows 激活

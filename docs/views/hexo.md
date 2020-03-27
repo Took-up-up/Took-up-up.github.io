@@ -4,7 +4,7 @@ date: 2019-04-09
 tags:
  - blog
 categories:
- -
+ - linux
 ---
 
 ![hexo](https://img.shields.io/badge/hexo-4.0.1-green)

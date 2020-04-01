@@ -1,10 +1,10 @@
 ---
-title: mysql常用语句
+title: MySQL常用语句
 date: 2019-04-09
 tags:
  - 
 categories:
- - 
+ - mysql
 ---
 
 ![Mysql](https://img.shields.io/badge/5.7.3-mysql-green)

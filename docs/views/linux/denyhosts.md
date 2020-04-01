@@ -1,6 +1,6 @@
 ---
-title: denyhosts
-date: 2019-04-09
+title: denyhosts IP限制
+date: 2019-04-10
 tags:
  - 
 categories:

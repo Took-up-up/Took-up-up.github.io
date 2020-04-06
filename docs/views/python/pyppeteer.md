@@ -35,15 +35,23 @@ browser = await launch({
 ### 可能的缺失依赖
 ::: tip
 cd xx/chrome-linux/ && ldd chrome | grep not
+
 例:(可能缺少)
+
 libatk-bridge-2.0.so.0 => not found
+
 libgtk-3.so.0 => not found
+
 libgdk-3.so.0 => not found 
+
 libGL.so.1 => not found
 
 
 # 查找库中哪些软件中包含对应的依赖包
+
 yum provides XX
+
 注意：对应64位依赖包，找错32位包，提示
+
 wrong ELF class: ELFCLASS32
 :::

@@ -7,11 +7,17 @@ categories:
  - item
 ---
 
-::: tip
-1. zabbix server
-2. zabbix client
-3. zabbix item add
+::: tip 原理
+`zabbix agent` 安装到`被监控`的主机上，它负责定期收集各项数据，并发送到zabbix server端，`zabbix server`将数据存储到数据库中，`zabbix web`根据数据在前端进行展现和绘图。这里agent收集数据分为 `主动` 和`被动` 两种模式：
+
+`主动模式`：由Agent主动建立TCP链接并向Server端发送请求,获取主动的监控项列表,并主动将监控项内需要检测的数据提交给server/proxy。
+
+`被动模式`：由Server建立TCP链接并向Agent端发送请求,获取监控项的数据，agent返回数据。。
+
+`zabbix proxy`：可选组件，用于分布式监控环境中，zabbix proxy代表server端，完成局部区域内的信息收集，最终统一发往server端。
 :::
+## 架构
+![](http://www.zsythink.net/wp-content/uploads/2016/12/121916_1337_2.png)
 ## Server
 ### Install
 ```bash

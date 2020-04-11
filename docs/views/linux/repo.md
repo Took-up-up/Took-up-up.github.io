@@ -12,8 +12,13 @@ categories:
 :::
 ```bash
 cd /etc/yum.repos.d
-wget http://mirrors.163.com/.help/CentOS6-Base-163.repo
-mv CentOS7-Base-163.repo CentOS-Base.repo
+wget http://mirrors.aliyun.com/repo/Centos-7.repo
+# 阿里源
+wget http://mirrors.aliyun.com/repo/epel-7.repo
+# 阿里拓展源
+wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
+# 网易源
+# mv CentOS7-Base-163.repo CentOS-Base.repo
 yum clean all && yum makecache	# 重新生成缓存
 ```
 

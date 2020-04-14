@@ -93,6 +93,24 @@ iptables -t filter -I INPUT -p icmp -m limit --limit-burst 3 --limit 10/minute -
 iptables -t filter -A INPUT -p icmp -j REJECT
 # 每秒生成3个令牌
 ```
-`ex` ex
 
-ex **ex**
+### tcp-flage 模块
+```bash
+iptables -t filter -I INPUT -p tcp -m tcp --dport 22 --tcp-flags SYN,ACK,FIN,RST,URG,PSH SYN -j REJECT
+iptables -t filter -I OUTPUT -p tcp -m tcp --sport 22 --tcp-flags SYN,ACK,FIN,RST,URG,PSH SYN,ACK -j REJECT
+iptables -t filter -I INPUT -p tcp -m tcp --dport 22 --tcp-flags ALL SYN -j REJECT
+iptables -t filter -I OUTPUT -p tcp -m tcp --sport 22 --tcp-flags ALL SYN,ACK -j REJECT
+# 匹配报文tcp三次握手头的标志位
+iptables -t filter -I INPUT -p tcp -m tcp --dport 22 --syn -j REJECT
+# 匹配新建tcp连接请求报文
+```
+### icmp 模块
+```bash
+iptables -t filter -I INPUT -p icmp -j REJECT
+# 拒绝所有icmp报文
+
+iptables -t filter -I INPUT -p icmp-type 8 -jREJECT
+# ping其他主机
+iptables -t filter -I INPUT -p icmp --icmp-type "echo-request" -j REJECT
+# 相反
+```

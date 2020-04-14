@@ -17,7 +17,7 @@ categories:
 `zabbix proxy`：可选组件，用于分布式监控环境中，zabbix proxy代表server端，完成局部区域内的信息收集，最终统一发往server端。
 :::
 ## 架构
-![](http://www.zsythink.net/wp-content/uploads/2016/12/121916_1337_2.png)
+![](https://took-up-up.gitee.io/pic/zabbix.png)
 ## Server
 ### Install
 ```bash

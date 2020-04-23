@@ -1,5 +1,5 @@
 ---
-title: Puppet自动化配置管理工具
+title: Puppet自动管理工具
 date: 2019-04-09
 tags:
  - 

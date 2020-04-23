@@ -59,10 +59,8 @@ yaw和yas：复制一个词和复制一个句子，即使光标不在词首和�
 
 gg:移动至文件第一行
 G :末行
+
+ctrl+s	# 阻塞
+ctrl+q	# 恢复
+ctrl+w	# windows中 ctrl+backspace
 ```
-### ex
-
-`ex` ex
-
-ex **ex**
-0

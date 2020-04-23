@@ -25,5 +25,7 @@ ssh-keygen
 **将当前用户公钥发送到目标机器授权列表中**
 ```bash
 ssh-copy-id root@x.x.x.x
-# 输入密码
+# 输入密码后即可
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@0.0.0.0 -p 23
+# 指定端口
 ```

@@ -13,10 +13,23 @@ categories:
 3. 可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl+v进入可视块模式。
 4. 替换模式：正常模式下，按R进入。
 :::
+
 ## Install
 ```bash
 yum intsall vim
 ```
+
+## Config
+设置缩进
+```bash
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set pastetoggle=<F12>   # F12 进入粘贴模式,防止缩进错乱
+```
+
 ## Run
 ```
 vim -c cmd file: 在打开文件前，先执行指定的命令；

@@ -96,7 +96,10 @@ systemctl start docker
 # 启动docker
 ```
 ## Use
+### 常用操作
 ```bash
+docker search ubuntu
+# 查找可用版本
 docker pull ubuntu:15.10
 # 拉取镜像
 docker run -it ubuntu:15.10 /bin/bash
@@ -104,8 +107,16 @@ docker run -it ubuntu:15.10 /bin/bash
 # 在完成操作之后，输入 exit 命令来退出这个容器
 docker images
 # 查看所有镜像
+docker port 容器ID
+# 查看容器端口映射
+docker logs -f 容器ID
+# 查看容器内部的标准输出
+docker top 容器名
+# 查看容器内部运行的进程
+ocker inspect 容器名
+# 查看容器的配置和状态信息 json格式
 docker ps
-# 查看所有容器
+# 查看到容器的端口映射
 docker ps -a
 # 查看所有已停止运行的容器
 docker stop 容器ID
@@ -117,19 +128,75 @@ docker exec -it 容器ID /bin/bash
 docker attach 容器ID
 # 与exec相同,但退出后会停止容器
 
+docker export 容器ID > ubuntu.tar
+# 导出容器
+cat docker/ubuntu.tar | docker import - test/ubuntu:v1
+# 导入容器
+docker import http://example.com/ubuntutgz example/imagerepo
+# 同上
 
-
-docker run -d -p 80:80 -v $PWD/html:usr/share/nginx/html docker.io/nginx --name nginx
-docker run -d -p 80:80 -v ~/nginx/www:/usr/share/nginx/html -v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v ~/nginx/logs:/var/log/nginx nginx
-
+docker rm -f 容器ID
+# 删除容器(需停止)
+docker container prune
+# 清理所有处于终止状态的容器
 
 docker commit -m="has update" -a="runoob" e218edb10161 runoob/ubuntu:v2
 -m:提交的描述信息
 -a:指定镜像作者
 e218edb10161：容器ID
 runoob/ubuntu:v2:指定要创建的目标镜像名
-
+# 镜像重命名
 docker cp 6dd4380ba708:/etc/nginx/nginx.conf ~/nginx/conf
+# 复制容器的配置文件到本地
+```
+###  web 应用
+```bash
+docker pull nginx:latest
+docker run -d -p 8080:80 -v $PWD/html:usr/share/nginx/html docker.io/nginx --name nginx
+# d:后台 p 8080:80 将本机8080映射到容器80端口 name nginx 容器名称 v 本机:容器
+docker run -d -p 80:80 -v ~/nginx/www:/usr/share/nginx/html -v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v ~/nginx/logs:/var/log/nginx nginx
+# 指定多个配置文件
+```
+## Docker建立私有仓库
+### Server
+```bash
+docker pull registry:latest
+mkdir -p /xx/file
+# 创建存储账户的文件夹路径
+docker run --entrypoint htpasswd registry -Bbn admin 123456  >> /xx/file/htpasswd
+# 创建用户密码信息文件
+docker run -d -p 5000:5000 --restart=always --name=registry
+ -v /xx/file/:/file/ 
+ -e "REGISTRY_AUTH=htpasswd" 
+ -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"
+ -e REGISTRY_AUTH_HTPASSWD_PATH=/xx/file/htpasswd registry:latest
+
+systemctl daemon-reload
+systemctl restart docker
+# 重启
+# 访问http://x.x.x.x:5000/v2/
+
+docker tag oracle/database:12.2.0.1-ee localhost:5000/oracle/database:12.2.0.1-ee
+# 将镜像打标签,在镜像名前添加私有库的名称localhost:5000
+docker push localhost:5000/oracle/database:12.2.0.1-ee
+# 提交带有私有库名的镜像
+```
+### Cilent
+```bash
+vim /etc/docker/daemon.json 
+# docker config 已说明,此处不重复
+vim /usr/lib/systemd/system/docker.service
+#
+ExecStart=/usr/bin/dockerd --insecure-registry http://x.x.x.x
+```
+
+## Docker GUI
+Portainer
+[官方地址](https://portainer.io/install.html)
+```bash
+docker volume create portainer_data
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+# 访问你的 IP:9000 即可进入容器管理页面
 ```
 ## Docker 安装Ubuntu
 ```bash

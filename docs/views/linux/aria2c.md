@@ -21,11 +21,18 @@ aria2c安装
 tar -zxvf aria2-1.35.0.tar.gz && cd aria2-1.35.0
 ./configure && make && make install
 
-配置
+# 配置
 mkdir /etc/aria2/ && touch aria2.conf
-xxxxx
 
-启动
+enable-rpc=true
+rpc-allow-origin-all=true
+rpc-listen-all=true
+rpc-listen-port=6800
+
+dir=/data/
+check-certificate=false
+
+# 启动
 aria2c --conf-path=/etc/aria2/aria2.conf
 
 ```

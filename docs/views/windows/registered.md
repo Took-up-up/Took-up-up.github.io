@@ -1,6 +1,6 @@
 ---
 title: Windows-registered
-date: 2019-04-09
+date: 2020-03-09
 tags:
  - 
 categories:

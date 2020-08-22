@@ -1,10 +1,10 @@
 ---
 title: Office2019-registred
-date: 2019-04-09
+date: 2020-03-19
 tags:
  - 
 categories:
- - 
+ - windows
 ---
 
 ## Office2019
